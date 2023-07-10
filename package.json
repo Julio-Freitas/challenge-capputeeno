@@ -1,0 +1,16 @@
+{
+    "name": "app",
+    "version": "1.0.0",
+    "license": "MIT",
+    "private": "true",
+    "workspaces": {
+        "packages": ["projects/*"]
+    },
+    "scripts": {
+        "backend-api": "yarn workspace @app/backend",
+        "app-web": "yarn workspace @app/capputeeno",
+        "start:api": "yarn backend-api start",
+        "dev:web": "yarn app-web dev",
+        "all": "yarn start:api | yarn dev:web"
+    }
+}
