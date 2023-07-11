@@ -71,6 +71,7 @@ export const FilterByPrioritys = styled.ul`
   border-radius: 4px;
   padding: 12px 16px;
   width: 100%;
+  z-index: 1;
 `;
 
 export const FilterByPrioritysItem = styled.li`
