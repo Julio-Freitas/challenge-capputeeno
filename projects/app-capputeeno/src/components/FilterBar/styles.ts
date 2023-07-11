@@ -38,7 +38,7 @@ export const FilterItem = styled.li<FilterItemProps>`
   `}
 `;
 
-export const FilterByPriorityContainer = styled.div<{ isOpen: boolean }>`
+export const FilterByPriorityContainer = styled.div`
   display: flex;
   align-items: center;
   position: relative;
@@ -54,13 +54,12 @@ export const FilterByPriorityContainer = styled.div<{ isOpen: boolean }>`
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
-
-    ${({ isOpen }) => css`
-      svg {
-        transition: ease-in-out 0.1s;
-        transform: rotateZ(${isOpen ? "180deg" : "0deg"});
-      }
-    `}
+  }
+  &[data-open="true"] {
+    svg {
+      transition: ease-in-out 0.1s;
+      transform: rotateZ(180deg);
+    }
   }
 `;
 
@@ -74,7 +73,7 @@ export const FilterByPrioritys = styled.ul`
   width: 100%;
 `;
 
-export const FilterByPrioritysItem = styled.li<FilterByPrioritysItemProps>`
+export const FilterByPrioritysItem = styled.li`
   font-size: 1.4rem;
   width: 100%;
   color: var(--text-dark);
@@ -85,10 +84,9 @@ export const FilterByPrioritysItem = styled.li<FilterByPrioritysItemProps>`
   &:nth-of-type(1) {
     margin-top: 0;
   }
-
-  ${({ slected }) => css`
-    border-bottom-color: ${slected ? "var(--orange-low);" : "none"};
-  `}
+  &[data-slected="true"] {
+    border-bottom-color: var(--orange-low);
+  }
   &:hover {
     border-bottom-color: var(--orange-low);
   }
