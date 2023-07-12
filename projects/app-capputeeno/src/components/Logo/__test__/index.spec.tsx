@@ -5,6 +5,6 @@ import { Logo } from ".."
 describe('<Logo />', () => {
     it('Should render correctly', () => {
         render(<Logo />)
-        expect(screen.getByText(/Capputeeno/i)).toBeInTheDocument
+        expect(screen.getByText(/Capputeenos/i)).toBeInTheDocument
     })
 })
