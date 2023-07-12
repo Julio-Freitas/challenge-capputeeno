@@ -6,7 +6,7 @@ import { FilterContextProviderProps, FilterContextProps } from './types';
 
 export const FilterContext = createContext<FilterContextProps>({
     search: '',
-    page: 0,
+    page: 1,
     type: FilterType.ALL,
     setSearch: (value: string) => value,
     setPage: (value: number) => value,
@@ -19,7 +19,7 @@ export const FilterContextProvider = ({
     children
 }: FilterContextProviderProps) => {
     const [search, setSearch] = useState('');
-    const [page, setPage] = useState(0);
+    const [page, setPage] = useState(1);
     const [type, setType] = useState(FilterType.ALL);
     const [priority, setPriority] = useState(FiltePriority.POPULARITY);
 

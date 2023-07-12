@@ -4,12 +4,13 @@ import { ProductCard } from './ProductCard';
 import * as S from './style';
 
 export const ProductsList = () => {
-    const { data, totalPage } = useProducts();
+    const { data, isLoading } = useProducts();
+
+    if (isLoading) return <h1>Carregando..</h1>;
+    if (!data?.length) return <h1>Chegoou ao Fim...</h1>;
 
     return (
         <>
-            {' '}
-            <h1>totalPage {totalPage}</h1>
             <S.ProductContainer>
                 {data?.map((product) => (
                     <ProductCard

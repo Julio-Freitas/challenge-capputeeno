@@ -16,22 +16,23 @@ const fetcher = (query: string): AxiosPromise<ProductFetchResponse> =>
 const fetchTotalPage = (): AxiosPromise<ProductFetchCountResponse> =>
     axios.post(API_URL, {
         query: `query {
-  _allProductsMeta{
-    count
-  }
-}`
+                _allProductsMeta{
+                    count
+                }
+            }`
     });
 
 export function useProducts() {
-    const { type, priority, search } = useFilter();
-    const searchDeferred = useDeferredValue(search);
-    const queryTypeCategory = mountQuery(type, priority);
+    const { type, priority, search, page } = useFilter();
 
-    const { data } = useQuery({
+    const searchDeferred = useDeferredValue(search);
+    const queryTypeCategory = mountQuery(type, priority, page);
+
+    const { data, isLoading } = useQuery({
         queryFn: () => fetcher(queryTypeCategory),
-        queryKey: ['products', type, priority]
+        queryKey: ['products', type, priority, page]
     });
-    const { data: totalPage } = useQuery({
+    const { data: totalProducts } = useQuery({
         queryFn: fetchTotalPage,
         queryKey: ['total-page']
     });
@@ -44,6 +45,7 @@ export function useProducts() {
 
     return {
         data: allProductsSearch,
-        totalPage: totalPage?.data.data._allProductsMeta.count
+        totalProducts: totalProducts?.data.data._allProductsMeta.count ?? 0,
+        isLoading
     };
 }

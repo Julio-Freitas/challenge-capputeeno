@@ -16,7 +16,6 @@ export const ProductItem = styled.li`
     border-radius: 0 0 0.4rem 0.4rem;
     background-color: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(5px);
-    max-width: 256px;
 
     h3 {
         font-size: 1.6rem;
@@ -42,7 +41,7 @@ export const ProductItem = styled.li`
 
     img {
         max-width: 100%;
-        width: 256ox;
+        width: 100%;
         display: inline-block;
         object-fit: fill;
     }

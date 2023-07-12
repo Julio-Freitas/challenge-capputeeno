@@ -1,19 +1,27 @@
 import { FiltePriority, FilterType } from '@/types/enum/filter';
 import { queryByFiltePriority, queryCategoryByType } from '@/utils';
 
-const attibutesData = `
+export const PER_PAGE = 12;
+
+const fragmentsAttibutesData = `
     id,
     name,
     price_in_cents,
     image_url,
 `;
 
-export const mountQuery = (type: FilterType, priority: FiltePriority) => {
+export const mountQuery = (
+    type: FilterType,
+    priority: FiltePriority,
+    page: number
+) => {
     if (type === FilterType.ALL && priority === FiltePriority.POPULARITY)
         return `
         query {
-            allProducts(sortField: "sales", sortOrder: "DSC", perPage: 12, page: 1){
-                ${attibutesData}
+            allProducts(sortField: "sales", sortOrder: "DSC", perPage:${PER_PAGE}, page: ${
+                page || 1
+            }){
+                ${fragmentsAttibutesData}
             }
         }
       `;
@@ -22,13 +30,15 @@ export const mountQuery = (type: FilterType, priority: FiltePriority) => {
     const category = queryCategoryByType(type);
 
     const filter = `sortField: "${field}", sortOrder: "${order}", ${
-        category ? `filter: { category: "${category}"}` : ''
+        category
+            ? `filter: { category: "${category}"}, ${page && 'page: 5'}`
+            : ''
     }`;
 
     return `
         query {
             allProducts(${filter}){
-                ${attibutesData}
+                ${fragmentsAttibutesData}
             }
         }
       `;

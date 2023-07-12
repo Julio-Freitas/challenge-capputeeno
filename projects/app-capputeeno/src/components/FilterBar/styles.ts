@@ -99,3 +99,39 @@ export const FilterByPrioritysItem = styled.li`
         border-bottom-color: var(--orange-low);
     }
 `;
+
+export const ContainerPagination = styled.div`
+    display: flex;
+    gap: 0.2rem;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+    button {
+        width: 3.2rem;
+        height: 3.2rem;
+        border-radius: 0.8rem;
+        background-color: var(--bg-gray);
+        color: var(--text-dark-2);
+        transition: ease-in-out 0.1s;
+
+        &:hover,
+        &:focus,
+        &[data-active-page='true'] {
+            background-color: #fff;
+            color: var(--orange-low);
+            border: 0.1rem solid var(--orange-low);
+            font-weight: bold;
+        }
+
+        &[data-arrow='left'] {
+            transform: rotateZ(90deg);
+        }
+        &[data-arrow='right'] {
+            transform: rotateZ(-90deg);
+        }
+
+        &[disabled] {
+            opacity: 0.3;
+        }
+    }
+`;
