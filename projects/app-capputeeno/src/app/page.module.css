@@ -1,7 +1,16 @@
 .main {
   display: flex;
   flex-direction: column;
-  padding: 34px 160px;
   min-height: 100vh;
   background-color: var(--bg-primary);
+  align-items: center;
+}
+
+@media  (min-width: 768px){
+  .main {
+    padding: 34px 160px;
+    max-width: 1440px;
+    margin: 0 auto;
+    align-items: baseline;
+  }
 }

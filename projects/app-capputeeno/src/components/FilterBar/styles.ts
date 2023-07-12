@@ -1,10 +1,17 @@
 import { css, styled } from "styled-components";
-import { FilterByPrioritysItemProps, FilterItemProps } from "./types";
+import {  FilterItemProps } from "./types";
 export const FilterBarContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
 `;
+
 export const FilterList = styled.ul`
   display: flex;
   align-items: center;

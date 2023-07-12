@@ -12,7 +12,7 @@ export const mountQuery = (type: FilterType, priority: FiltePriority) => {
   if (type === FilterType.ALL && priority === FiltePriority.POPULARITY)
     return `
         query {
-            allProducts(sortField: "sales", sortOrder: "DSC"){
+            allProducts(sortField: "sales", sortOrder: "DSC", perPage: 12, page: 1){
                 ${attibutesData}
             }
         }

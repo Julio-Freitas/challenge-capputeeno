@@ -10,3 +10,7 @@ export interface ProductFetchResponse {
     allProducts: ProductData[];
   };
 }
+
+export interface ProductFetchCountResponse {
+  data: { _allProductsMeta: { count: number } };
+}
