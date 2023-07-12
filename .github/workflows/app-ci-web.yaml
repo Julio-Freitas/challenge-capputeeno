@@ -20,4 +20,20 @@ jobs:
           yarn install
           yarn test:web
 
+  run-lint:
+      runs-on: ubuntu-latest
+      strategy:
+        matrix:
+          node-version: [16.x]
+      steps:
+      - uses: actions/checkout@v3
+      - name: Using Node.js ${{ matrix.node-version}}
+        uses: actions/setup-node@v2
+        with:
+          node-version: ${{ matrix.node-version}}
+      - name: run lint
+        run: |
+          yarn install
+          yarn lint:web
+
 
