@@ -21,7 +21,7 @@ export const FilterContextProvider = ({
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(0);
   const [type, setType] = useState(FilterType.ALL);
-  const [priority, setPriority] = useState(FiltePriority.NEWS);
+  const [priority, setPriority] = useState(FiltePriority.POPULARITY);
 
   const contextValue = {
     search,
