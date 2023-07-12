@@ -1,5 +1,5 @@
-import { FiltePriority, FilterType } from "@/types/enum/filter";
-import { queryByFiltePriority, queryCategoryByType } from "@/utils";
+import { FiltePriority, FilterType } from '@/types/enum/filter';
+import { queryByFiltePriority, queryCategoryByType } from '@/utils';
 
 const attibutesData = `
     id,
@@ -9,8 +9,8 @@ const attibutesData = `
 `;
 
 export const mountQuery = (type: FilterType, priority: FiltePriority) => {
-  if (type === FilterType.ALL && priority === FiltePriority.POPULARITY)
-    return `
+    if (type === FilterType.ALL && priority === FiltePriority.POPULARITY)
+        return `
         query {
             allProducts(sortField: "sales", sortOrder: "DSC", perPage: 12, page: 1){
                 ${attibutesData}
@@ -18,14 +18,14 @@ export const mountQuery = (type: FilterType, priority: FiltePriority) => {
         }
       `;
 
-  const { field, order } = queryByFiltePriority(priority);
-  const category = queryCategoryByType(type);
+    const { field, order } = queryByFiltePriority(priority);
+    const category = queryCategoryByType(type);
 
-  const filter = `sortField: "${field}", sortOrder: "${order}", ${
-    category ? `filter: { category: "${category}"}` : ""
-  }`;
+    const filter = `sortField: "${field}", sortOrder: "${order}", ${
+        category ? `filter: { category: "${category}"}` : ''
+    }`;
 
-  return `
+    return `
         query {
             allProducts(${filter}){
                 ${attibutesData}
