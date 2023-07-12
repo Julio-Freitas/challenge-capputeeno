@@ -11,6 +11,8 @@
         "app-web": "yarn workspace @app/capputeeno",
         "start:api": "yarn backend-api start",
         "dev:web": "yarn app-web dev",
-        "all": "yarn start:api | yarn dev:web"
+        "all": "yarn start:api | yarn dev:web",
+        "test:web": "yarn app-web test",
+        "build:web": "yarn app-web build"
     }
 }
