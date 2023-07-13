@@ -18,8 +18,7 @@ export const mountQuery = (
     if (type === FilterType.ALL && priority === FiltePriority.POPULARITY)
         return `
         query {
-            allProducts(sortField: "sales", sortOrder: "DSC", perPage:${PER_PAGE}, page: ${
-                page || 1
+            allProducts(sortField: "sales", sortOrder: "DSC", perPage:${PER_PAGE}, page: ${page || 1
             }){
                 ${fragmentsAttibutesData}
             }
@@ -29,11 +28,10 @@ export const mountQuery = (
     const { field, order } = queryByFiltePriority(priority);
     const category = queryCategoryByType(type);
 
-    const filter = `sortField: "${field}", sortOrder: "${order}", ${
-        category
-            ? `filter: { category: "${category}"}, ${page && 'page: 5'}`
-            : ''
-    }`;
+    const filter = `sortField: "${field}", sortOrder: "${order}", ${category
+        ? `filter: { category: "${category}"}`
+        : ''
+        }perPage:${PER_PAGE}, page:${page}`;
 
     return `
         query {
