@@ -2,6 +2,7 @@
 import { useProducts } from '@/hooks/useProducts';
 import { ProductCard } from './ProductCard';
 import * as S from './style';
+import { FilterByPagination } from '../FilterBar/filterbyPagination';
 
 export const ProductsList = () => {
     const { data, isLoading } = useProducts();
@@ -14,6 +15,7 @@ export const ProductsList = () => {
             <S.ProductContainer>
                 {data?.map((product) => (
                     <ProductCard
+                        id={product.id}
                         key={product.id}
                         image={product.image_url}
                         title={product.name}
@@ -21,6 +23,7 @@ export const ProductsList = () => {
                     />
                 ))}
             </S.ProductContainer>
+            <FilterByPagination />
         </>
     );
 };

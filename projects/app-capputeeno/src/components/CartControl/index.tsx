@@ -2,14 +2,16 @@
 
 import * as S from './styles';
 import { CartIcon } from '../icons';
-import { useLocationStorage } from '@/hooks/useLocationStore';
+import { useCart } from '@/hooks/useCart';
 
 export function CartControl() {
-    const { value } = useLocationStorage('cart-item', []);
+    const { totalCart } = useCart();
     return (
         <S.Container>
             <CartIcon />
-            {value?.length && <S.CartCount>{value.length}</S.CartCount>}
+            {totalCart > 0 && (
+                <S.CartCount data-testid="totalCart">{totalCart}</S.CartCount>
+            )}
         </S.Container>
     );
 }

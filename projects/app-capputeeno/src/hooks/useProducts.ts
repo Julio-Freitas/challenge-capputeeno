@@ -1,26 +1,11 @@
-import {
-    ProductFetchCountResponse,
-    ProductFetchResponse
-} from '@/types/server/products';
 import { useQuery } from '@tanstack/react-query';
-import axios, { AxiosPromise } from 'axios';
+
 import { useFilter } from './useFilter';
-import { mountQuery } from '../utils/mountQuery';
+
 import { useDeferredValue } from 'react';
-
-const API_URL = process.env.NEXT_PUBLIC_API_URL as string;
-
-const fetcher = (query: string): AxiosPromise<ProductFetchResponse> =>
-    axios.post(API_URL, { query });
-
-const fetchTotalPage = (): AxiosPromise<ProductFetchCountResponse> =>
-    axios.post(API_URL, {
-        query: `query {
-                _allProductsMeta{
-                    count
-                }
-            }`
-    });
+import { fetchTotalPage, fetcher } from '@/server/api';
+import { ProductsFetchResponse } from '@/types/server/products';
+import { mountQuery, queryTotalProduct } from '@/utils';
 
 export function useProducts() {
     const { type, priority, search, page } = useFilter();
@@ -29,11 +14,12 @@ export function useProducts() {
     const queryTypeCategory = mountQuery(type, priority, page);
 
     const { data, isLoading } = useQuery({
-        queryFn: () => fetcher(queryTypeCategory),
+        queryFn: () => fetcher<ProductsFetchResponse>(queryTypeCategory),
         queryKey: ['products', type, priority, page]
     });
+
     const { data: totalProducts } = useQuery({
-        queryFn: fetchTotalPage,
+        queryFn: () => fetchTotalPage(queryTotalProduct),
         queryKey: ['total-page']
     });
 

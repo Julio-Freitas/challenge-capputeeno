@@ -5,7 +5,7 @@ export const ProductContainer = styled.ul`
     grid-template-columns: repeat(auto-fill, 25.6rem);
     grid-gap: 3.2rem;
     max-width: 100%;
-    margin-top: 6rem;
+    margin: 6rem 0;
 `;
 
 export const ProductItem = styled.li`
@@ -15,14 +15,17 @@ export const ProductItem = styled.li`
     justify-content: center;
     border-radius: 0 0 0.4rem 0.4rem;
     background-color: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
+    box-shadow: 1px 2px 4px -1px var(--text-dark-2);
+    cursor: pointer;
+    transition: ease-in-out 0.2s;
 
     h3 {
         font-size: 1.6rem;
         line-height: 150%;
         font-weight: 300;
         color: var(--text-dark-2);
-        margin: 0.1rem 0;
+        margin: 0.2rem 0;
         text-align: left;
         width: 100%;
         align-self: flex-start;
@@ -35,7 +38,7 @@ export const ProductItem = styled.li`
         font-size: 1.6rem;
         text-align: left;
         width: 100%;
-        padding: 0 0.5rem;
+        padding: 1rem 0.5rem;
         color: var(--shapes-dark);
     }
 
@@ -44,5 +47,10 @@ export const ProductItem = styled.li`
         width: 100%;
         display: inline-block;
         object-fit: fill;
+    }
+
+    &:hover {
+        opacity: 0.8;
+        box-shadow: 1px 2px 4px -1px var(--orange-low);
     }
 `;
