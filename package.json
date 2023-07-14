@@ -15,6 +15,7 @@
     "dev:web": "yarn app-web dev",
     "all": "yarn start:api | yarn dev:web",
     "test:web": "yarn app-web test",
+    "test:coverage": "yarn app-web",
     "build:web": "yarn app-web build",
     "lint:web": "yarn app-web lint"
   }

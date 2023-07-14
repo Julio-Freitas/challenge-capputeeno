@@ -9,7 +9,9 @@
   --delete-color: #de3838;
   --orange-low: #ffa585;
   --shapes: #dce2e6;
-  --bg-gray: #E9E9F0
+  --bg-gray: #E9E9F0;
+  --shapes-blue: #115D8C;
+  --text-gray: #617480
 }
 
 * {
@@ -38,4 +40,8 @@ button {
 
 ul {
   list-style: none;
+}
+
+img {
+    max-width: 100%;
 }
