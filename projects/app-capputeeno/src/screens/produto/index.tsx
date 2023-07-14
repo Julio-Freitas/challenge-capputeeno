@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import * as S from './styles';
 import { formatCentsInReal, trasnlateCategory } from '@/utils';
-import { ArrowIcon, BackButton, CartIcon } from '@/components';
+import { BackButton, CartIcon } from '@/components';
 import { useSearchParams } from 'next/navigation';
 import { useProduct } from '@/hooks/useProduct';
 import { useCart } from '@/hooks/useCart';
