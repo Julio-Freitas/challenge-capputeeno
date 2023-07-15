@@ -9,10 +9,27 @@ const createJestConfig = nextJest({
 /** @type {import('jest').Config} */
 const config = {
     // Add more setup options before each test is run
-    // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
-
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
+    collectCoverage: true,
+    coverageProvider: 'v8',
     testEnvironment: 'jest-environment-jsdom',
+    testPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/.next/'],
 
+    moduleNameMapper: {
+        // Handle CSS imports (with CSS modules)
+        // https://jestjs.io/docs/webpack#mocking-css-modules
+        '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
+
+        // Handle CSS imports (without CSS modules)
+        '^.+\\.(css|sass|scss)$': '<rootDir>/__mocks__/styleMock.js',
+
+        // Handle image imports
+        // https://jestjs.io/docs/webpack#handling-static-assets
+        '^.+\\.(png|jpg|jpeg|gif|webp|avif|ico|bmp|svg)$/i': `<rootDir>/__mocks__/fileMock.js`,
+
+        // Handle module aliases
+        '^@/components/(.*)$': '<rootDir>/components/$1'
+    },
     coverageThreshold: {
         global: {
             branches: 15,
