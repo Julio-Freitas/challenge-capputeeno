@@ -1,34 +1,41 @@
 'use client';
 
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useMemo, useState } from 'react';
 import { CartContextProps, CartContextProviderProps, ItemsCart } from './types';
 import { ProductData } from '@/types/server/products';
-import { useLocationStorage } from '@/hooks/useLocationStore';
 
-const KEY_STORAGE_PRODUCT = 'cart-item';
+export const KEY_STORAGE_PRODUCT = 'cart-item';
 
 export const CartContext = createContext<CartContextProps>({
     items: [],
-    totalCart: 0,
-    addProductInCart: () => false
+    totalItemsCart: 0,
+    addProductInCart: () => false,
+    onDeleteItem: () => false,
+    cartPrice: {
+        subTotalPriceCart: 0,
+        hasFreight: true,
+        total: 0
+    }
 });
+
 export const CartContextProdiver = ({ children }: CartContextProviderProps) => {
-    const [totalCart, setTotalCart] = useState(0);
+    const [totalItemsCart, settotalItemsCart] = useState(0);
     const [items, setItems] = useState<ItemsCart[] | []>([]);
-    const { value } = useLocationStorage(KEY_STORAGE_PRODUCT);
 
     useEffect(() => {
         const cartItems = localStorage.getItem(KEY_STORAGE_PRODUCT);
+
         if (cartItems) {
-            const { items, totalCart } = JSON.parse(cartItems);
+            const { items, totalItemsCart } = JSON.parse(cartItems);
             setItems(items);
 
-            setTotalCart(totalCart);
+            settotalItemsCart(totalItemsCart);
         }
-    }, [value]);
+    }, []);
 
     const addProductInCart = (product: ProductData) => {
         const cartItems = localStorage.getItem(KEY_STORAGE_PRODUCT);
+
         if (cartItems) {
             const itemsCartStorage = JSON.parse(cartItems);
 
@@ -45,6 +52,7 @@ export const CartContextProdiver = ({ children }: CartContextProviderProps) => {
                     KEY_STORAGE_PRODUCT,
                     JSON.stringify(itemsCartStorage)
                 );
+                setItems(itemsCartStorage.items);
             } else {
                 const joinItemsCart = [
                     { ...product, quantity: 1 },
@@ -53,30 +61,83 @@ export const CartContextProdiver = ({ children }: CartContextProviderProps) => {
 
                 const moreOneItemInStorage = {
                     items: joinItemsCart,
-                    totalCart: joinItemsCart.length
+                    totalItemsCart: joinItemsCart.length
                 };
 
                 localStorage.setItem(
                     KEY_STORAGE_PRODUCT,
                     JSON.stringify(moreOneItemInStorage)
                 );
-                setTotalCart((oldValue) => ++oldValue);
+                settotalItemsCart((oldValue) => ++oldValue);
+
+                setItems(moreOneItemInStorage.items);
             }
-            setItems(itemsCartStorage.items);
         } else {
             const newProduct = { ...product, quantity: 1 };
             const newCart = {
                 items: [{ ...newProduct }],
-                totalCart: 1
+                totalItemsCart: 1
             };
             localStorage.setItem(KEY_STORAGE_PRODUCT, JSON.stringify(newCart));
+            console.log(newCart);
             setItems(newCart.items);
-            setTotalCart(1);
+            settotalItemsCart(1);
         }
     };
 
+    const updateState = (id: string) => {
+        const newitems = items.filter((item) => item.id !== id);
+        setItems(newitems);
+        settotalItemsCart(newitems.length);
+    };
+
+    const onDeleteItem = (product: ProductData) => {
+        const cartItems = localStorage.getItem(KEY_STORAGE_PRODUCT);
+        if (cartItems) {
+            const itemsCartStorage = JSON.parse(cartItems);
+            const items = itemsCartStorage.items.filter(
+                (item: ProductData) => item.id !== product.id
+            );
+            const newCart = {
+                items,
+                totalItemsCart: items.length
+            };
+            localStorage.setItem(KEY_STORAGE_PRODUCT, JSON.stringify(newCart));
+            updateState(product.id);
+        }
+    };
+
+    const addFrete = (total: number) => {
+        if (total < 90000) return total + 4000;
+        return total;
+    };
+
+    const cartPrice = useMemo(() => {
+        const totalByItem = items.map(
+            (product) => +product.price_in_cents * product.quantity
+        );
+        const subTotalPriceCart = totalByItem.reduce(
+            (acc, current) => acc + current,
+            0
+        );
+
+        return {
+            subTotalPriceCart,
+            hasFreight: subTotalPriceCart < 90000,
+            total: addFrete(subTotalPriceCart)
+        };
+    }, [items]);
+
     return (
-        <CartContext.Provider value={{ items, totalCart, addProductInCart }}>
+        <CartContext.Provider
+            value={{
+                items,
+                totalItemsCart,
+                addProductInCart,
+                onDeleteItem,
+                cartPrice
+            }}
+        >
             {children}
         </CartContext.Provider>
     );

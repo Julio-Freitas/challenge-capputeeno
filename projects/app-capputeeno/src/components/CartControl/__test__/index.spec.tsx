@@ -1,4 +1,4 @@
-import { renderWithProvicer } from '@/utils/tests/helpers';
+import { renderWithProvider } from '@/utils/tests/helpers';
 import { CartControl } from '..';
 import { screen } from '@testing-library/react';
 
@@ -11,7 +11,7 @@ describe('<CartControl', () => {
         mockUseCart.mockImplementationOnce(() => ({
             totalCart: 0
         }));
-        renderWithProvicer(<CartControl />);
+        renderWithProvider(<CartControl />);
 
         expect(screen.queryByTestId('totalCart')).not.toBeInTheDocument;
     });
@@ -19,7 +19,7 @@ describe('<CartControl', () => {
         mockUseCart.mockImplementationOnce(() => ({
             totalCart: 10
         }));
-        renderWithProvicer(<CartControl />);
+        renderWithProvider(<CartControl />);
         expect(screen.queryByTestId('totalCart')?.textContent).toBe('10');
     });
 });

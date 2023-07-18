@@ -1,4 +1,4 @@
-import { renderWithProvicer } from '@/utils/tests/helpers';
+import { renderWithProvider } from '@/utils/tests/helpers';
 import { FilterByPriority } from '../filterByPriority';
 import { act, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -16,7 +16,7 @@ jest.mock('../../../hooks/useFilter', () => ({
 }));
 describe('<FilterByPriority', () => {
     it('Should render inital', () => {
-        renderWithProvicer(<FilterByPriority />);
+        renderWithProvider(<FilterByPriority />);
         expect(FiltePriority[currentPriority]).toEqual('NEWS');
         expect(screen.getByRole('button', { name: /Organizar por/i }))
             .toBeInTheDocument;
@@ -24,7 +24,7 @@ describe('<FilterByPriority', () => {
     });
 
     it('should render list when click "Organizar por"', async () => {
-        renderWithProvicer(<FilterByPriority />);
+        renderWithProvider(<FilterByPriority />);
         const button = screen.getByRole('button', { name: /Organizar por/i });
         expect(screen.queryByRole('list')).not.toBeInTheDocument;
 
@@ -35,7 +35,7 @@ describe('<FilterByPriority', () => {
     });
 
     it('should click to have filter Preço: maior menor', async () => {
-        renderWithProvicer(<FilterByPriority />);
+        renderWithProvider(<FilterByPriority />);
         const button = screen.getByRole('button', {
             name: /Organizar por/i
         });
@@ -51,7 +51,7 @@ describe('<FilterByPriority', () => {
     });
 
     it('should click to have filter Preço: menor maior', async () => {
-        renderWithProvicer(<FilterByPriority />);
+        renderWithProvider(<FilterByPriority />);
         const button = screen.getByRole('button', {
             name: /Organizar por/i
         });
@@ -66,7 +66,7 @@ describe('<FilterByPriority', () => {
     });
 
     it('should click to have filter Mais vendidos', async () => {
-        renderWithProvicer(<FilterByPriority />);
+        renderWithProvider(<FilterByPriority />);
         const button = screen.getByRole('button', {
             name: /Organizar por/i
         });

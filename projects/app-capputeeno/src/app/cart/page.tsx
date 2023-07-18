@@ -7,6 +7,6 @@ export const metadata: Metadata = {
         'Que bom que você está chegando aqui.. falta pouco parar finalizar suas compras =D..'
 };
 
-export default function Produto() {
+export default function Cart() {
     return <CartPage />;
 }
