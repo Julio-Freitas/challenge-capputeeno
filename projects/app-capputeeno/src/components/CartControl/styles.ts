@@ -15,4 +15,5 @@ export const CartCount = styled.span`
 
 export const Container = styled.div`
     position: relative;
+    cursor: pointer;
 `;

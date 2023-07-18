@@ -5,7 +5,7 @@ import React from 'react';
 
 const queryClient = new QueryClient();
 
-export const renderWithProvicer = (children: React.ReactNode): RenderResult =>
+export const renderWithProvider = (children: React.ReactNode): RenderResult =>
     render(
         <QueryClientProvider client={queryClient}>
             {children}

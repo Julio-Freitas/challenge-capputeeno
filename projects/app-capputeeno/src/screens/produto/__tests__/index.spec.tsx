@@ -24,7 +24,7 @@ jest.mock('../../..//hooks/useProduct', () => ({
 }));
 
 import { ProductData } from '@/types/server/products';
-import { renderWithProvicer } from '@/utils/tests/helpers';
+import { renderWithProvider } from '@/utils/tests/helpers';
 import { dataMock } from '../__mocks__/data';
 
 const requestProduct = (id: string, data: ProductData, isLoading: boolean) => {
@@ -39,7 +39,7 @@ const requestProduct = (id: string, data: ProductData, isLoading: boolean) => {
 describe('<ProdutoPage />', () => {
     it('should render correctly', async () => {
         requestProduct(dataMock.id, dataMock, false);
-        renderWithProvicer(<ProdutoPage />);
+        renderWithProvider(<ProdutoPage />);
 
         expect(screen.getByRole('link', { name: /voltar/i })).toBeInTheDocument;
         expect(screen.getByRole('img')).toBeInTheDocument;
@@ -51,7 +51,7 @@ describe('<ProdutoPage />', () => {
     it('should call function add item in cart', async () => {
         requestProduct(dataMock.id, dataMock, false);
 
-        renderWithProvicer(<ProdutoPage />);
+        renderWithProvider(<ProdutoPage />);
 
         await waitFor(async () => {
             const addCartButton = screen.getByRole('button', {
@@ -64,7 +64,7 @@ describe('<ProdutoPage />', () => {
 
     it('should render loading text', async () => {
         requestProduct(dataMock.id, dataMock, true);
-        renderWithProvicer(<ProdutoPage />);
+        renderWithProvider(<ProdutoPage />);
 
         expect(screen.getByRole('heading', { name: /Carregando.../i }))
             .toBeInTheDocument;
@@ -72,7 +72,7 @@ describe('<ProdutoPage />', () => {
 
     it('should redirect to product list when not id', () => {
         requestProduct('', dataMock, false);
-        renderWithProvicer(<ProdutoPage />);
+        renderWithProvider(<ProdutoPage />);
 
         expect(mockRedirectnext).toBeCalledTimes(1);
     });

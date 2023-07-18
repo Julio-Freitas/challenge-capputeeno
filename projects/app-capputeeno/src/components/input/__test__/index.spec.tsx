@@ -1,4 +1,4 @@
-import { renderWithProvicer } from '@/utils/tests/helpers';
+import { renderWithProvider } from '@/utils/tests/helpers';
 import { PrimaryInputWSearchIcon } from '..';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -7,7 +7,7 @@ const mockHandleChangeInput = jest.fn();
 const mockInitialValue = '';
 describe('<PrimaryInputWSearchIcon', () => {
     it('should render correctly', () => {
-        renderWithProvicer(
+        renderWithProvider(
             <PrimaryInputWSearchIcon
                 value={mockInitialValue}
                 handleChange={mockHandleChangeInput}
@@ -21,7 +21,7 @@ describe('<PrimaryInputWSearchIcon', () => {
     });
 
     it('should rener correctly when change value', async () => {
-        renderWithProvicer(
+        renderWithProvider(
             <PrimaryInputWSearchIcon
                 value={mockInitialValue}
                 handleChange={mockHandleChangeInput}
