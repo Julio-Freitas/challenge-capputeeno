@@ -23,12 +23,12 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={saira.className}>
-                <CartContextProdiver>
-                    <FilterContextProvider>
+                <FilterContextProvider>
+                    <CartContextProdiver>
                         <Header />
                         <Template>{children}</Template>
-                    </FilterContextProvider>
-                </CartContextProdiver>
+                    </CartContextProdiver>
+                </FilterContextProvider>
             </body>
         </html>
     );
