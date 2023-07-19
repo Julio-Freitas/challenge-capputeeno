@@ -6,7 +6,7 @@ var PORT = process.env.NODE_PORT || 3000;
 var HOST = process.env.NODE_HOST || "localhost";
 
 const TOTAL_PAGES = 5;
-
+console.log("process.env.NODE_PORT ", process.env.NODE_PORT);
 const baseProducts = [
   {
     name: "Caneca de cerâmica rústica",
