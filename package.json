@@ -18,8 +18,5 @@
     "test:coverage": "yarn app-web",
     "build:web": "yarn app-web build",
     "lint:web": "yarn app-web lint"
-  },
-  "engines": {
-    "node": ">=14"
   }
 }
