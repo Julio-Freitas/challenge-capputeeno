@@ -9,6 +9,7 @@ import { useProduct } from '@/hooks/useProduct';
 import { useCart } from '@/hooks/useCart';
 
 import { redirect } from 'next/navigation';
+
 export function ProdutoPage() {
     const searchParams = useSearchParams();
     const productId = searchParams?.get('id') ?? '';
@@ -19,6 +20,8 @@ export function ProdutoPage() {
 
     if (isLoading) return <h1>Carregando...</h1>;
 
+    if (!data) redirect('/');
+
     return (
         <S.SectionProduct>
             <BackButton />
@@ -26,14 +29,14 @@ export function ProdutoPage() {
                 <Image
                     width={540}
                     height={480}
-                    src={data.image_url}
+                    src={data?.image_url}
                     alt={'title'}
                     title={`${'title'} by ${'price'}`}
                 />
                 <S.ProductWrapperInfo>
                     <div>
                         <span className="category">
-                            {trasnlateCategory(data.category ?? '')}
+                            CATEGORIA: {trasnlateCategory(data.category ?? '')}
                         </span>
                         <h1 className="title-product">{data.name}</h1>
                         <span className="price-product">
