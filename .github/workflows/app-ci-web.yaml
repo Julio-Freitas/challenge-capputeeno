@@ -35,5 +35,3 @@ jobs:
         run: |
           yarn install
           yarn lint:web
-
-
