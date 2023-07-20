@@ -10,7 +10,7 @@
         "test": "jest --maxWorkers=50%",
         "test:coverage": "jest --coverage",
         "deploy": "yarn build && vercel --confirm --no-clipboard",
-        "deploy:prod": "yarn deploy --prod --token=$VERCEL_TOKEN"
+        "deploy:prod": "yarn deploy --token=$VERCEL_TOKEN  --prod"
     },
     "dependencies": {
         "@tanstack/react-query": "^4.29.7",
