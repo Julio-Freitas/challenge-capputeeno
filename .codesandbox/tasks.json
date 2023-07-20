@@ -1,0 +1,66 @@
+{
+  // These tasks will run in order when initializing your CodeSandbox project.
+  "setupTasks": [
+    {
+      "name": "Install Dependencies",
+      "command": "yarn install"
+    }
+  ],
+
+  // These tasks can be run from CodeSandbox. Running one will open a log in the app.
+  "tasks": {
+    "backend-api": {
+      "name": "backend-api",
+      "command": "yarn backend-api",
+      "runAtStart": false
+    },
+    "app-web": {
+      "name": "app-web",
+      "command": "yarn app-web",
+      "runAtStart": false
+    },
+    "start:api": {
+      "name": "start:api",
+      "command": "yarn start:api",
+      "runAtStart": true
+    },
+    "dev:web": {
+      "name": "dev:web",
+      "command": "yarn dev:web",
+      "runAtStart": false
+    },
+    "all": {
+      "name": "all",
+      "command": "yarn all",
+      "runAtStart": false,
+      "preview": {
+        "port": 3333
+      }
+    },
+    "test:web": {
+      "name": "test:web",
+      "command": "yarn test:web",
+      "runAtStart": false
+    },
+    "test:coverage": {
+      "name": "test:coverage",
+      "command": "yarn test:coverage",
+      "runAtStart": false
+    },
+    "build:web": {
+      "name": "build:web",
+      "command": "yarn build:web",
+      "runAtStart": false
+    },
+    "lint:web": {
+      "name": "lint:web",
+      "command": "yarn lint:web",
+      "runAtStart": false
+    },
+    "deploy:web-prod": {
+      "name": "deploy:web-prod",
+      "command": "yarn deploy:web-prod",
+      "runAtStart": false
+    }
+  }
+}
