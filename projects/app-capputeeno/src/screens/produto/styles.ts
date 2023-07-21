@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
 export const SectionProduct = styled.section`
+    width: 100%;
+
     @media (max-width: 992px) {
         padding: 3.2rem;
     }
