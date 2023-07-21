@@ -18,6 +18,7 @@
     "test:coverage": "yarn app-web",
     "build:web": "yarn app-web build",
     "lint:web": "yarn app-web lint",
-    "deploy:web-prod": "yarn app-web deploy:prod"
+    "deploy:web-prod": "yarn app-web deploy:prod",
+    "yarn deploy:preview": "yarn app-web deploy:preview"
   }
 }
