@@ -1,11 +1,14 @@
-import { FilterContextProvider } from '@/context/filterContext';
-import './globals.css';
-import { Saira } from 'next/font/google';
-import { Header } from '@/components';
-import Template from './templage';
-import { CartContextProdiver } from '@/context/CartContext';
 import 'react-toastify/dist/ReactToastify.css';
+import './globals.css';
+
+import { Saira } from 'next/font/google';
 import { ToastContainer } from 'react-toastify';
+
+import { FilterContextProvider } from '@/context/filterContext';
+import { CartContextProdiver } from '@/context/CartContext';
+import { GitHubIcon, Header } from '@/components';
+import Template from './templateBase';
+import { Footer } from '@/components/Footer';
 
 const saira = Saira({
     weight: ['300', '400', '500', '600'],
@@ -32,6 +35,17 @@ export default function RootLayout({
                         <Template>{children}</Template>
                     </CartContextProdiver>
                 </FilterContextProvider>
+
+                <Footer.Root>
+                    <Footer.Link
+                        passHref
+                        href={
+                            'https://github.com/Julio-Freitas/challenge-capputeeno'
+                        }
+                    >
+                        <GitHubIcon />
+                    </Footer.Link>
+                </Footer.Root>
             </body>
         </html>
     );

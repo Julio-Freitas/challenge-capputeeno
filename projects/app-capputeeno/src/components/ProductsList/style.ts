@@ -6,6 +6,7 @@ export const ProductContainer = styled.ul`
     grid-gap: 3.2rem;
     max-width: 100%;
     margin: 6rem 0;
+    justify-content: space-between;
 `;
 
 export const ProductItem = styled.li`
@@ -19,6 +20,9 @@ export const ProductItem = styled.li`
     box-shadow: 1px 2px 4px -1px var(--text-dark-2);
     cursor: pointer;
     transition: ease-in-out 0.2s;
+    width: 250px;
+    overflow: hidden;
+    justify-content: space-between;
 
     h3 {
         font-size: 1.6rem;
