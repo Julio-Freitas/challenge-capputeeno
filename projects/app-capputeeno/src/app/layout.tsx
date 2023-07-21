@@ -4,6 +4,8 @@ import { Saira } from 'next/font/google';
 import { Header } from '@/components';
 import Template from './templage';
 import { CartContextProdiver } from '@/context/CartContext';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from 'react-toastify';
 
 const saira = Saira({
     weight: ['300', '400', '500', '600'],
@@ -26,6 +28,7 @@ export default function RootLayout({
                 <FilterContextProvider>
                     <CartContextProdiver>
                         <Header />
+                        <ToastContainer />
                         <Template>{children}</Template>
                     </CartContextProdiver>
                 </FilterContextProvider>

@@ -27,6 +27,7 @@ export const CartPage = () => {
                         Total ({totalItemsCart} produtos){' '}
                         <b>{formatCentsInReal(cartPrice.subTotalPriceCart)}</b>
                     </S.Span>
+
                     <S.WrapperProductsCart>
                         {items.map((product: ItemsCart) => (
                             <S.ProductCartItem key={product.id}>
@@ -98,9 +99,9 @@ export const CartPage = () => {
                     <h3>Total</h3>
                     <span>{formatCentsInReal(cartPrice.total)}</span>
                 </div>
-                <button type="button" disabled={items.length <= 0}>
+                <S.ButtonBuy type="button" disabled={items.length <= 0}>
                     Finalizar a compra
-                </button>
+                </S.ButtonBuy>
 
                 <S.SidebarNav>
                     <Link passHref href="/">

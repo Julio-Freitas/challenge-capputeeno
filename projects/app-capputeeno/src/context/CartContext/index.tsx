@@ -3,6 +3,7 @@
 import { createContext, useEffect, useMemo, useState } from 'react';
 import { CartContextProps, CartContextProviderProps, ItemsCart } from './types';
 import { ProductData } from '@/types/server/products';
+import { toast } from 'react-toastify';
 
 export const KEY_STORAGE_PRODUCT = 'cart-item';
 
@@ -79,10 +80,24 @@ export const CartContextProdiver = ({ children }: CartContextProviderProps) => {
                 totalItemsCart: 1
             };
             localStorage.setItem(KEY_STORAGE_PRODUCT, JSON.stringify(newCart));
-            console.log(newCart);
+
             setItems(newCart.items);
             settotalItemsCart(1);
         }
+        toast(
+            <div>
+                <h2>{product.name}</h2>
+                <p> adicionado com sucesso!</p>
+            </div>,
+            {
+                hideProgressBar: true,
+                autoClose: 2000,
+                type: 'success',
+                draggable: true,
+                position: 'top-right',
+                theme: 'dark'
+            }
+        );
     };
 
     const updateState = (id: string) => {

@@ -106,6 +106,7 @@ export const ContainerPagination = styled.div`
     justify-content: end;
     align-items: center;
     width: 100%;
+
     button {
         width: 3.2rem;
         height: 3.2rem;
@@ -133,5 +134,10 @@ export const ContainerPagination = styled.div`
         &[disabled] {
             opacity: 0.3;
         }
+    }
+
+    @media (max-width: 768px) {
+        margin-top: 2rem;
+        padding-right: 3.4rem;
     }
 `;
