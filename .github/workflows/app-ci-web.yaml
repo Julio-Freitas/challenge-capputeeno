@@ -36,7 +36,7 @@ jobs:
           yarn install
           yarn lint:web
 
-  previrew:
+  preview:
     runs-on: ubuntu-latest
     strategy:
       matrix:
