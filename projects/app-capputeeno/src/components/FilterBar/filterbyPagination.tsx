@@ -15,6 +15,7 @@ export const FilterByPagination = () => {
     } = usePagination();
 
     const totalButtons = [];
+
     for (let index = 1; index <= totalPage; index++) {
         totalButtons.push(index);
     }

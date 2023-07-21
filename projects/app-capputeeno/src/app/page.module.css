@@ -4,11 +4,12 @@
   min-height: 100vh;
   background-color: var(--bg-primary);
   align-items: center;
+  padding-bottom: 3rem;
 }
 
 @media  (min-width: 768px){
   .main {
-    padding: 34px 160px;
+    padding: 34px 150px;
     max-width: 1440px;
     margin: 0 auto;
     align-items: baseline;

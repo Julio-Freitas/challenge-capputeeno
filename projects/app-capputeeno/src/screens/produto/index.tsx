@@ -26,13 +26,14 @@ export function ProdutoPage() {
         <S.SectionProduct>
             <BackButton />
             <S.ProductWrapper>
-                <Image
-                    width={540}
-                    height={480}
-                    src={data?.image_url}
-                    alt={'title'}
-                    title={`${'title'} by ${'price'}`}
-                />
+                <S.ProductImageWrapper>
+                    <Image
+                        fill
+                        src={data?.image_url}
+                        alt={'title'}
+                        title={`${'title'} by ${'price'}`}
+                    />
+                </S.ProductImageWrapper>
                 <S.ProductWrapperInfo>
                     <div>
                         <span className="category">
