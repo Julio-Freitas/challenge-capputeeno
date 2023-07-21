@@ -9,9 +9,10 @@
         "lint": "next lint",
         "test": "jest --maxWorkers=50%",
         "test:coverage": "jest --coverage",
-        "deploy": "yarn build && vercel --confirm --no-clipboard",
+        "deploy": "yarn build && vercel --yes",
         "deploy:prod": "yarn deploy --token=$VERCEL_TOKEN  --prod",
-        "deploy:preview": "node ./scrips/pullRequestPreview"
+        "deploy:staging": "yarn deploy --token=$VERCEL_TOKEN",
+        "deploy:preview": "node ./scripts/pullRequestPreview"
     },
     "dependencies": {
         "@tanstack/react-query": "^4.29.7",
