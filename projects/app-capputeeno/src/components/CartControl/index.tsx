@@ -11,7 +11,7 @@ export function CartControl() {
     const handleNavigateToCart = () => router.push('/cart');
 
     return (
-        <S.Container onClick={handleNavigateToCart}>
+        <S.Container data-testid="wrapper-card" onClick={handleNavigateToCart}>
             <CartIcon />
             {totalItemsCart > 0 && (
                 <S.CartCount data-testid="totalCart">

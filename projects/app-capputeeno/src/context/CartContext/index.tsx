@@ -25,18 +25,16 @@ export const CartContextProdiver = ({ children }: CartContextProviderProps) => {
 
     useEffect(() => {
         const cartItems = localStorage.getItem(KEY_STORAGE_PRODUCT);
-
         if (cartItems) {
             const { items, totalItemsCart } = JSON.parse(cartItems);
             setItems(items);
-
             settotalItemsCart(totalItemsCart);
         }
     }, []);
 
     const addProductInCart = (product: ProductData) => {
         const cartItems = localStorage.getItem(KEY_STORAGE_PRODUCT);
-
+        console.log('passando');
         if (cartItems) {
             const itemsCartStorage = JSON.parse(cartItems);
 
@@ -131,6 +129,7 @@ export const CartContextProdiver = ({ children }: CartContextProviderProps) => {
         const totalByItem = items.map(
             (product) => +product.price_in_cents * product.quantity
         );
+
         const subTotalPriceCart = totalByItem.reduce(
             (acc, current) => acc + current,
             0

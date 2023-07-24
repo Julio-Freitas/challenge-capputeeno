@@ -1,10 +1,11 @@
 'use client';
 
 import { useFilter } from '@/hooks/useFilter';
-import { CartControl } from '../CartControl';
+
 import { Logo } from '../Logo';
 import { PrimaryInputWSearchIcon } from '../input';
 import * as S from './styles';
+import { CartControl } from '../CartControl';
 
 export const Header = () => {
     const { search, setSearch } = useFilter();

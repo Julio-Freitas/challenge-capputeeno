@@ -1,6 +1,6 @@
 'use client';
 import { FilterByPagination } from './filterbyPagination';
-import { FilterByType } from './filterByTtype';
+import { FilterByType } from './filterByType';
 import { FilterByPriority } from './filterByPriority';
 import * as S from './styles';
 

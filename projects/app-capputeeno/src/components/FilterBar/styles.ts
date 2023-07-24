@@ -1,5 +1,5 @@
-import { css, styled } from 'styled-components';
-import { FilterItemProps } from './types';
+import { styled } from 'styled-components';
+
 export const FilterBarContainer = styled.div`
     display: flex;
     align-items: center;
@@ -20,17 +20,19 @@ export const FilterList = styled.ul`
     list-style: none;
 `;
 
-export const FilterItem = styled.li<FilterItemProps>`
+export const FilterItem = styled.li`
     text-transform: uppercase;
     font-family: inherit;
     font-weight: 400;
     line-height: 2.2rem;
     color: var(--text-dark);
     cursor: pointer;
+    transition: ease-in-out 0.2s;
 
     &:first-child {
         padding-left: 0;
     }
+
     > button {
         background: transparent;
         color: var(--text-dark);
@@ -39,10 +41,11 @@ export const FilterItem = styled.li<FilterItemProps>`
         border: none;
         cursor: pointer;
     }
+    border: 0.4rem solid transparent;
 
-    ${({ selected }) => css`
-        border-bottom: ${selected && '4px solid var(--orange-low)'};
-    `}
+    &[data-selected='true'] {
+        border-bottom-color: var(--orange-low);
+    }
 `;
 
 export const FilterByPriorityContainer = styled.div`

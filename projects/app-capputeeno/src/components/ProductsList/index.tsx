@@ -1,8 +1,8 @@
 'use client';
 import { useProducts } from '@/hooks/useProducts';
 import { ProductCard } from './ProductCard';
-import * as S from './style';
 import { FilterByPagination } from '../FilterBar/filterbyPagination';
+import * as S from './style';
 
 export const ProductsList = () => {
     const { data, isLoading } = useProducts();

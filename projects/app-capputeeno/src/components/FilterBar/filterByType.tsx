@@ -10,7 +10,7 @@ export const FilterByType = () => {
 
     return (
         <S.FilterList>
-            <S.FilterItem selected={type === FilterType.ALL}>
+            <S.FilterItem data-selected={type === FilterType.ALL}>
                 <button
                     id={`${FilterType.MUG}`}
                     onClick={() => handleFilterType(FilterType.ALL)}
@@ -18,7 +18,7 @@ export const FilterByType = () => {
                     Todos
                 </button>
             </S.FilterItem>
-            <S.FilterItem selected={type === FilterType.SHIRT}>
+            <S.FilterItem data-selected={type === FilterType.SHIRT}>
                 <button
                     id={`${FilterType.SHIRT}`}
                     onClick={() => handleFilterType(FilterType.SHIRT)}
@@ -27,13 +27,13 @@ export const FilterByType = () => {
                 </button>
             </S.FilterItem>
 
-            <S.FilterItem selected={type === FilterType.MUG}>
+            <S.FilterItem data-selected={type === FilterType.MUG}>
                 {' '}
                 <button
                     id={`${FilterType.MUG}`}
                     onClick={() => handleFilterType(FilterType.MUG)}
                 >
-                    Canetas
+                    Canecas
                 </button>
             </S.FilterItem>
         </S.FilterList>
