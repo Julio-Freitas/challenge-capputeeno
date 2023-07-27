@@ -1,21 +1,21 @@
-import { useState } from 'react';
 import { ArrowIcon } from '../icons';
 import * as S from './styles';
 import { useFilter } from '@/hooks/useFilter';
 import { FiltePriority } from '@/types/enum/filter';
+import { useToggle } from '@/hooks/useToogle';
 
 export const FilterByPriority = () => {
-    const [open, setOpen] = useState(false);
+    const { open, setToggle } = useToggle(false);
     const { priority, setPriority } = useFilter();
 
     const handleUpdatePriority = (priority: FiltePriority) => {
         setPriority(priority);
-        setOpen(false);
+        setToggle(false);
     };
 
     return (
         <S.FilterByPriorityContainer data-open={open}>
-            <button type="button" onClick={() => setOpen(!open)}>
+            <button type="button" onClick={() => setToggle(!open)}>
                 Organizar por <ArrowIcon />
             </button>
             {open ? (

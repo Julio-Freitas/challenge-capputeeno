@@ -1,3 +1,5 @@
+'use client';
+
 import { FooterProps } from './types';
 import * as S from './styles';
 

@@ -1,3 +1,5 @@
+'use client';
+
 import Link from 'next/link';
 import { BackIcon } from '../icons/back-icon';
 import * as S from './styles';

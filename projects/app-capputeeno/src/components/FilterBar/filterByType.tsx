@@ -1,12 +1,15 @@
 import * as S from './styles';
 import { useFilter } from '@/hooks/useFilter';
 import { FilterType } from '@/types/enum/filter';
-import React from 'react';
+import React, { useCallback } from 'react';
 
 export const FilterByType = () => {
     const { setType, type } = useFilter();
 
-    const handleFilterType = (value: FilterType) => setType(value);
+    const handleFilterType = useCallback(
+        (value: FilterType) => setType(value),
+        [setType]
+    );
 
     return (
         <S.FilterList>

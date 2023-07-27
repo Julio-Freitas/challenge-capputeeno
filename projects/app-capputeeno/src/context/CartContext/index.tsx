@@ -34,7 +34,7 @@ export const CartContextProdiver = ({ children }: CartContextProviderProps) => {
 
     const addProductInCart = (product: ProductData) => {
         const cartItems = localStorage.getItem(KEY_STORAGE_PRODUCT);
-        console.log('passando');
+
         if (cartItems) {
             const itemsCartStorage = JSON.parse(cartItems);
 

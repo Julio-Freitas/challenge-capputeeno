@@ -1,4 +1,6 @@
-import React, { InputHTMLAttributes } from 'react';
+'use client';
+
+import React, { InputHTMLAttributes, useCallback } from 'react';
 import * as S from './styles';
 
 import { SearchIcon } from '../icons/search-icon';
@@ -13,13 +15,17 @@ export function PrimaryInputWSearchIcon({
     value,
     ...props
 }: InputProps) {
+    const handleChangeInput = useCallback(
+        (event: React.ChangeEvent<HTMLInputElement>) =>
+            handleChange(event.target.value),
+        [handleChange]
+    );
+
     return (
         <S.InputContainer>
             <S.PrimaryInput
                 value={value}
-                onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
-                    handleChange(event.target.value)
-                }
+                onChange={handleChangeInput}
                 {...props}
             />
             <SearchIcon />

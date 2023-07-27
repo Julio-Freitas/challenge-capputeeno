@@ -1,3 +1,5 @@
+'use client';
+
 export { ArrowIcon } from './arrow-icon';
 export { BackIcon } from './back-icon';
 export { CartIcon } from './cart-icon';

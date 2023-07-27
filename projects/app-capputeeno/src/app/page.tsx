@@ -1,5 +1,3 @@
-'use client';
-
 import { FilterBar } from '@/components/FilterBar';
 
 import { ProductsList } from '@/components';
